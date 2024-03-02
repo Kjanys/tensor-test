@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useRef, useState } from "react";
 import "./ModalComponent.css";
 import { ITableProp } from "../../utils/types/i-table";
 
-/**
+/*
  Используется для сброса значений ввода в модальном окне.
 */
 const STOCK_ROW = {
@@ -13,7 +13,7 @@ const STOCK_ROW = {
   salary: undefined,
 };
 
-/**
+/*
  Компонент модального окна, позволяющий пользователям добавлять новую строку в таблицу.
  param {function} closeModal - Функция закрытия модального окна.
  param {function} onAddRow - Функция добавления новой строки в таблицу.
@@ -21,45 +21,34 @@ const STOCK_ROW = {
 const ModalComponent = ({ closeModal, onAddRow }) => {
   const [inputValues, setInputValues] = useState<ITableProp>(STOCK_ROW);
 
-  /**
+  /*
    Функция обратного вызова, обновляющая значения ввода при вводе пользователем текста в поле ввода.
    param {React.ChangeEvent<HTMLInputElement>} event - Объект события изменения.
   */
-  const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setInputValues({
-        ...inputValues,
-        [event.target.name]: event.target.value,
-      });
-    },
-    [inputValues]
-  );
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValues({
+      ...inputValues,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-  /**
+  /*
    Функция обратного вызова, обрабатывающая отправку формы и добавляющая новую строку в таблицу.
    param {React.FormEvent<HTMLFormElement>} event - Объект события отправки формы.
   */
-  const handleSubmit = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-    
-      // Проверка, есть ли в введенных данных пустые поля и вывод предупреждения
-      if (Object.values(inputValues).includes("")) {
-        alert("Заполните форму");
-        return;
-      }
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-      // Добавление новой строки и сброс значений ввода
-      onAddRow(inputValues);
-      setInputValues(STOCK_ROW);
-    },
-    [inputValues, onAddRow]
-  );
+    // Проверка, есть ли в введенных данных пустые поля и вывод предупреждения
+    if (Object.values(inputValues).includes("")) {
+      alert("Заполните форму");
+      return;
+    }
 
-  /**
-   Мемоизированные значения ввода для избежания ненужных перерисовок.
-  */
-  const memoizedInputValues = useMemo(() => inputValues, [inputValues]);
+    // Добавление новой строки и сброс значений ввода
+    onAddRow(inputValues);
+    setInputValues(STOCK_ROW);
+  };
 
   return (
     <div className="modal-overlay">
@@ -73,7 +62,7 @@ const ModalComponent = ({ closeModal, onAddRow }) => {
               type="text"
               id="Name"
               name="name"
-              value={memoizedInputValues.name}
+              value={inputValues.name}
               onChange={handleChange}
               className="input-style"
             />
@@ -84,7 +73,7 @@ const ModalComponent = ({ closeModal, onAddRow }) => {
               type="text"
               id="Age"
               name="age"
-              value={memoizedInputValues.age}
+              value={inputValues.age}
               onChange={handleChange}
               className="input-style"
             />
@@ -95,7 +84,7 @@ const ModalComponent = ({ closeModal, onAddRow }) => {
               type="text"
               id="Address"
               name="address"
-              value={memoizedInputValues.address}
+              value={inputValues.address}
               onChange={handleChange}
               className="input-style"
             />
@@ -106,7 +95,7 @@ const ModalComponent = ({ closeModal, onAddRow }) => {
               type="text"
               id="Position"
               name="position"
-              value={memoizedInputValues.position}
+              value={inputValues.position}
               onChange={handleChange}
               className="input-style"
             />
@@ -117,7 +106,7 @@ const ModalComponent = ({ closeModal, onAddRow }) => {
               type="text"
               id="Salary"
               name="salary"
-              value={memoizedInputValues.salary}
+              value={inputValues.salary}
               onChange={handleChange}
               className="input-style"
             />
