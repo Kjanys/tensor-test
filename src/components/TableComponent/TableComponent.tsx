@@ -55,34 +55,38 @@ const TableComponent: React.FC = () => {
   };
 
   /**
-  Хоок useEffect, добавляющий обработчик события прокрутки к контейнеру данных
+  Хук useEffect, добавляющий обработчик события прокрутки к контейнеру данных
   для обнаружения момента, когда пользователь прокрутил до определенного смещения.
  */
   useEffect(() => {
     const dataContainer = document.getElementById("data-container");
-    if (dataContainer) {
-      dataContainer.addEventListener("scroll", () => {
-        if (
-          dataContainer.offsetHeight +
-            dataContainer.scrollTop +
-            TABLE_ROWS_SCROLL_OFFSET >
-          dataContainer.scrollHeight
-        ) {
-          loadMoreData();
-        }
-      });
-    }
+    if(!dataContainer) return;
 
+    // функция проверки скрола
+    const handleScrollEvent = () => {
+      if (
+        dataContainer &&
+        dataContainer.offsetHeight +
+          dataContainer.scrollTop +
+          TABLE_ROWS_SCROLL_OFFSET >
+          dataContainer.scrollHeight
+      ) {
+        loadMoreData();
+      }
+    };
+    dataContainer.addEventListener("scroll", handleScrollEvent);
+
+    // удаляем слушателя для избежания утечек памяти
     return () => {
       if (dataContainer) {
-        dataContainer.removeEventListener("scroll", () => {});
+        dataContainer.removeEventListener("scroll", handleScrollEvent);
       }
     };
   }, [currentDataSize]);
 
   /**
- * Функция closeModal, закрывающая модальное окно.
- */
+   * Функция closeModal, закрывающая модальное окно.
+   */
   const closeModal = () => {
     setModalIsOpen(false);
   };
