@@ -81,9 +81,7 @@ const TableComponent: React.FC = () => {
 
     // удаляем слушателя для избежания утечек памяти
     return () => {
-      if (dataContainer) {
-        dataContainer.removeEventListener("scroll", handleScrollEvent);
-      }
+      dataContainer.removeEventListener("scroll", handleScrollEvent);
     };
   }, [currentDataSize]);
 
