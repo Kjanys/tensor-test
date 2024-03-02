@@ -68,11 +68,10 @@ const TableComponent: React.FC = () => {
     // функция проверки скрола
     const handleScrollEvent = () => {
       const isNeededToLoad =
-        dataContainer &&
         dataContainer.offsetHeight +
           dataContainer.scrollTop +
           TABLE_ROWS_SCROLL_OFFSET >
-          dataContainer.scrollHeight;
+        dataContainer.scrollHeight;
 
       if (isNeededToLoad) {
         loadMoreData();
