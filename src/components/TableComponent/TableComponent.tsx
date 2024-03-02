@@ -26,10 +26,13 @@ const TableComponent: React.FC = () => {
   пользователем до определенного смещения.
  */
   const loadMoreData = () => {
-    const nimberOfRowsToAdd =
-      currentDataSize + TABLE_ROWS_ADDING_NUMBER < dataJSON.length
-        ? currentDataSize + TABLE_ROWS_ADDING_NUMBER
-        : dataJSON.length;
+    const isNotEndOfData =
+      currentDataSize + TABLE_ROWS_ADDING_NUMBER < dataJSON.length;
+
+    const nimberOfRowsToAdd = isNotEndOfData
+      ? currentDataSize + TABLE_ROWS_ADDING_NUMBER
+      : dataJSON.length;
+
     setData(data.concat(dataJSON.slice(currentDataSize, nimberOfRowsToAdd)));
     setCurrentDataSize(nimberOfRowsToAdd);
   };
