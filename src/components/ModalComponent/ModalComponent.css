@@ -1,0 +1,43 @@
+.modal-content {
+    padding: 16px;
+}
+
+.form-style {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-style {
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.input-style {
+    margin-bottom: 8px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.buttons-style{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.submit-button-style,
+.close-button-style {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.submit-button-style:hover,
+.close-button-style:hover {
+  background-color: #0062cc;
+}
