@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./TableComponent.css";
 import dataJSON from "../../mocks/data.json";
 import { ITableProp } from "../../utils/types/i-table";
@@ -48,11 +48,11 @@ const TableComponent: React.FC = () => {
   Функция onAddRow, добавляющая новую строку в таблицу.
   param {ITableProp} newTableProp - Данные новой строки.
  */
-  const onAddRow = (newTableProp: ITableProp) => {
-    setData([...data, newTableProp]);
-    setCurrentDataSize(data.length + 1);
+  const onAddRow = useCallback((newTableProp: ITableProp) => {
+    setData((prevData) => [...prevData, newTableProp]);
+    setCurrentDataSize((prevDataSize) => prevDataSize + 1);
     setModalIsOpen(false);
-  };
+  }, []);
 
   /**
   Хук useEffect, добавляющий обработчик события прокрутки к контейнеру данных
@@ -60,7 +60,7 @@ const TableComponent: React.FC = () => {
  */
   useEffect(() => {
     const dataContainer = document.getElementById("data-container");
-    if(!dataContainer) return;
+    if (!dataContainer) return;
 
     // функция проверки скрола
     const handleScrollEvent = () => {
