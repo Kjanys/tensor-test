@@ -1,5 +1,6 @@
 #### Node version: 16.17.1
 [![Build](https://github.com/Kjanys/tensor-test/actions/workflows/main.yml/badge.svg)](https://github.com/Kjanys/tensor-test/actions/workflows/main.yml)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/06685ccd-11e4-4a55-897f-6027ae6db859/deploy-status)](https://app.netlify.com/sites/profound-sprinkles-f0f8f1/deploys)
 ### Запуск:
 
