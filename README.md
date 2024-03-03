@@ -1,6 +1,6 @@
 #### Node version: 16.17.1
 [![Build](https://github.com/Kjanys/tensor-test/actions/workflows/main.yml/badge.svg)](https://github.com/Kjanys/tensor-test/actions/workflows/main.yml)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/06685ccd-11e4-4a55-897f-6027ae6db859/deploy-status)](https://app.netlify.com/sites/profound-sprinkles-f0f8f1/deploys)
 ### Запуск:
 
 - Установите node modules: `npm i`
@@ -43,3 +43,4 @@
 1) Решил отказаться от стейт-менеджера в данном задании, так как работы со стейтами и данными не много. Если бы объем задания был бы больше использовал бы Redux + RTK.
 2) Возможно отслеживание прокрутки до конца стоило сделать через IntersectionObserver, но я сделал через отслеживание скрола.
 3) До этого с github actions не работал, но попытался сделать.
+4) Так же развернул на Netlify (Бедж сверху README)
