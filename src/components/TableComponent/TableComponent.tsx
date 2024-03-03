@@ -25,7 +25,7 @@ const TableComponent: React.FC = () => {
   Функция loadMoreData, загружающая дополнительные данные при прокрутке
   пользователем до определенного смещения.
  */
-  const loadMoreData = () => {
+  const loadMoreData = useCallback(() => {
     const isNotEndOfData =
       currentDataSize + TABLE_ROWS_ADDING_NUMBER < dataJSON.length;
 
@@ -35,7 +35,7 @@ const TableComponent: React.FC = () => {
 
     setData(data.concat(dataJSON.slice(currentDataSize, nimberOfRowsToAdd)));
     setCurrentDataSize(nimberOfRowsToAdd);
-  };
+  }, [currentDataSize, data]);
 
   /**
   Функция handleDeleteRow, удаляющая строку по определенному индексу.
@@ -83,7 +83,7 @@ const TableComponent: React.FC = () => {
     return () => {
       dataContainer.removeEventListener("scroll", handleScrollEvent);
     };
-  }, [currentDataSize]);
+  }, [currentDataSize, loadMoreData]);
 
   /**
    * Функция closeModal, закрывающая модальное окно.

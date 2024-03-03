@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useState } from "react";
 import "./ModalComponent.css";
 import { ITableProp } from "../../utils/types/i-table";
 
