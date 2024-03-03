@@ -1,4 +1,4 @@
-name: push
+name: Build
 run-name: ${{ github.actor }} run Actions 🚀
 on: workflow_dispatch
 jobs:
