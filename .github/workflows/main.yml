@@ -20,4 +20,4 @@ jobs:
       - name: build
         run: |
           echo "Start build"
-          npm build
+          npm run build
