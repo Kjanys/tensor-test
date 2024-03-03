@@ -14,6 +14,8 @@ jobs:
       - name: Install
         run: |
           echo "Start install"
+          npm install
       - name: build
         run: |
           echo "Start build"
+          npm build
